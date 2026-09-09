@@ -11,12 +11,20 @@ public class S03_CustomPolygonMesh_Square : MonoBehaviour
             new Vector3(1f, 0f, 0f), // 1
             new Vector3(1f, 1f, 0f), // 2
             new Vector3(0f, 1f, 0f), // 3
+            new Vector3(1f, 2f, 0f), // 4
+            new Vector3(-1f, 1f, 0f), // 5
+            new Vector3(0f, -1f, 0f), // 6
+            new Vector3(2f, 0f, 0f), // 7
         };
 
         int[] triangles = new int[]
         {
             0, 1, 2,
-            0, 2, 3
+            0, 2, 3,
+            3, 2, 4,
+            0, 3, 5,
+            6, 1, 0,
+            2, 1, 7
         };
 
         Mesh mesh = new Mesh();
@@ -25,5 +33,6 @@ public class S03_CustomPolygonMesh_Square : MonoBehaviour
         mesh.RecalculateNormals();
 
         GetComponent<MeshFilter>().mesh = mesh;
+        GetComponent<MeshRenderer>().sharedMaterial = new Material(Shader.Find("Universal Render Pipeline/Lit"));
     }
 }
