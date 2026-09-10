@@ -17,8 +17,6 @@ public class S04_CustomCubeMesh : MonoBehaviour
 
         int[] triangles = new int[]
         {
-            3, 1, 0,
-            3, 2, 1,
             4, 0, 3,
             4, 1, 0,
             4, 2, 1,
