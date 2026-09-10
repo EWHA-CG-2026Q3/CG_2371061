@@ -23,6 +23,11 @@ public class S04_CustomCubeMesh : MonoBehaviour
             4, 0, 1,
             4, 1, 2,
             4, 2, 3,
+            3, 5, 0,
+            0, 5, 1,
+            1, 5, 2,
+            2, 5, 3
+
         };
 
         Mesh mesh = new Mesh();
