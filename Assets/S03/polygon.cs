@@ -19,12 +19,12 @@ public class S03_CustomPolygonMesh_Square : MonoBehaviour
 
         int[] triangles = new int[]
         {
-            0, 1, 2,
-            0, 2, 3,
-            3, 2, 4,
-            0, 3, 5,
-            6, 1, 0,
-            2, 1, 7
+            3, 2, 0,
+            2, 1, 0,
+            2, 7, 1,
+            4, 2, 3,
+            5, 3, 0,
+            0, 1, 6
         };
 
         Mesh mesh = new Mesh();
