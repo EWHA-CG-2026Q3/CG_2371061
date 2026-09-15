@@ -88,10 +88,11 @@ public class S05_MyMeshRenderer : MonoBehaviour
         {
             for (int y = 0; y < canvasHeight; y++)
             {
-                // TODO: 줄무늬는 x만 봤지만, 체스판은 x와 y를 함께 고려해야 합니다.
-                // 힌트: (x / size) + (y / size) 의 결과를 활용해보세요.
+                bool isColorA = ((x / size) + (y / size)) % 2 == 0;
 
-                // 여기에 SetPixel 호출까지 직접 작성하세요.
+                Color checkerColor = isColorA ? colorA : colorB;
+
+                canvasTexture.SetPixel(x, y, checkerColor);
             }
         }
     }
