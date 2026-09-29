@@ -106,7 +106,6 @@ public class S08_DirectTransform : MonoBehaviour
                 );
                 break;
 
-            // 이동 → 스케일
             case DemoMode.TranslateThenScale:
                 verts = ApplyTranslation(
                     baseVertices,
@@ -119,7 +118,6 @@ public class S08_DirectTransform : MonoBehaviour
                 );
                 break;
 
-            // 스케일 → 이동
             case DemoMode.ScaleThenTranslate:
                 verts = ApplyScale(
                     baseVertices,
