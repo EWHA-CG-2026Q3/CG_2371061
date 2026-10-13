@@ -58,6 +58,10 @@ public class S12_VirtualCamera_Finish : MonoBehaviour
     Matrix4x4 BuildProjectionMatrix()
     {
         float aspect = (float)width / height;                      // 캔버스의 가로세로 비 (400 ÷ 300)
+        
+        // aspet = 1 인 경우
+        // float aspect = 1f;
+        
         float t = Mathf.Tan(fieldOfView * 0.5f * Mathf.Deg2Rad);   // tan(fov / 2)
 
         Matrix4x4 m = Matrix4x4.zero;                              // 16칸 모두 0에서 시작
