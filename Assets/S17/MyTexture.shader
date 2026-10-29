@@ -1,4 +1,4 @@
-﻿Shader "CG/S17_Texture"
+﻿Shader "CG/MyTexture"
 {
     Properties
     {
