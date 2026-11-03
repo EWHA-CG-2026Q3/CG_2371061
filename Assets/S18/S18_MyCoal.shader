@@ -30,8 +30,8 @@
 
             float4 frag(float2 uv : TEXCOORD0) : SV_Target
             {
-                float3 crack = tex2D(_EmissionMap, uv).rgb;                    // S17처럼 텍스처 읽기
-                return float4(_BaseColor.rgb + _EmissionColor.rgb * crack, 1); // crack을 곱함
+                float3 crack = tex2D(_EmissionMap, uv).rgb;
+                return float4(_BaseColor.rgb + _EmissionColor.rgb * crack, 1);
             }
 
             ENDHLSL
