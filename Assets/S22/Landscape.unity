@@ -1027,9 +1027,9 @@ MonoBehaviour:
   m_Target: {fileID: 548751619}
   m_PlayOnAwake: 1
   m_LoopMode: 1
-  m_Method: 1
-  m_Duration: 18.94086
-  m_MaxSpeed: 2
+  m_Method: 0
+  m_Duration: 20
+  m_MaxSpeed: 1.8940861
   m_EasingMode: 0
   m_AlignmentMode: 3
   m_ObjectForwardAxis: 2
