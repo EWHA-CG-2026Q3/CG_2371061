@@ -11,6 +11,10 @@ public class SpotlightAnimation : MonoBehaviour
     public float panRange = 90f;
     public float tiltRange = 35f;
 
+    [Header("Animation Offset")]
+    [Range(0f, 360f)]
+    public float phaseOffset = 0f;
+
     private Quaternion initialYokeRotation;
     private Quaternion initialHeadRotation;
 
@@ -37,11 +41,15 @@ public class SpotlightAnimation : MonoBehaviour
     {
         float time = Time.time;
 
-        float pan = Mathf.Sin(time * panSpeed * Mathf.Deg2Rad)
-                    * panRange;
+        float phase = phaseOffset * Mathf.Deg2Rad;
 
-        float tilt = Mathf.Sin(time * tiltSpeed * Mathf.Deg2Rad)
-                     * tiltRange;
+        float pan = Mathf.Sin(
+            time * panSpeed * Mathf.Deg2Rad + phase
+        ) * panRange;
+
+        float tilt = Mathf.Sin(
+            time * tiltSpeed * Mathf.Deg2Rad + phase
+        ) * tiltRange;
 
         yoke.localRotation =
             initialYokeRotation * Quaternion.Euler(0, pan, 0);
