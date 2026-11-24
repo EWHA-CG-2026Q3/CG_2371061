@@ -35988,10 +35988,10 @@ Light:
   serializedVersion: 12
   m_Type: 0
   m_Color: {r: 1, g: 1, b: 0.83333325, a: 1}
-  m_Intensity: 8
-  m_Range: 12
-  m_SpotAngle: 35
-  m_InnerSpotAngle: 21
+  m_Intensity: 15
+  m_Range: 15
+  m_SpotAngle: 45
+  m_InnerSpotAngle: 35
   m_CookieSize2D: {x: 0.5, y: 0.5}
   m_Shadows:
     m_Type: 2
@@ -43826,10 +43826,10 @@ Light:
   serializedVersion: 12
   m_Type: 0
   m_Color: {r: 1, g: 1, b: 0.83333325, a: 1}
-  m_Intensity: 8
-  m_Range: 12
-  m_SpotAngle: 35
-  m_InnerSpotAngle: 21
+  m_Intensity: 15
+  m_Range: 15
+  m_SpotAngle: 45
+  m_InnerSpotAngle: 35
   m_CookieSize2D: {x: 0.5, y: 0.5}
   m_Shadows:
     m_Type: 2
@@ -56785,7 +56785,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 335b99f860ef26641ac0165beb146b7d, type: 2}
+  - {fileID: 2100000, guid: 204e9c718f52aa64988c9e29abe07a76, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -75906,10 +75906,10 @@ Light:
   serializedVersion: 12
   m_Type: 0
   m_Color: {r: 1, g: 1, b: 0.83333325, a: 1}
-  m_Intensity: 8
-  m_Range: 12
-  m_SpotAngle: 35
-  m_InnerSpotAngle: 21
+  m_Intensity: 15
+  m_Range: 15
+  m_SpotAngle: 45
+  m_InnerSpotAngle: 35
   m_CookieSize2D: {x: 0.5, y: 0.5}
   m_Shadows:
     m_Type: 2
@@ -112988,7 +112988,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 335b99f860ef26641ac0165beb146b7d, type: 2}
+  - {fileID: 2100000, guid: 204e9c718f52aa64988c9e29abe07a76, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -119705,7 +119705,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 335b99f860ef26641ac0165beb146b7d, type: 2}
+  - {fileID: 2100000, guid: 204e9c718f52aa64988c9e29abe07a76, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
