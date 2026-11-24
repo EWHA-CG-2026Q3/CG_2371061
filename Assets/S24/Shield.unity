@@ -2243,7 +2243,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f449ebdb483c254cb70d44a68d730e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Actor_SetImpactProperty
-  targetRenderer: {fileID: 0}
+  targetRenderer: {fileID: 1711813856144050376}
   positionProperty: _ImpactPosition
   timeProperty: _ImpactTime
 --- !u!114 &3469287836985736198
@@ -2260,7 +2260,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Trigger_OnClickPoint
   OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 3469287836985736197}
+        m_TargetAssemblyTypeName: Actor_SetImpactProperty, Assembly-CSharp
+        m_MethodName: Actor_SetImpact
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1001 &8562374637376846780
 PrefabInstance:
   m_ObjectHideFlags: 0
