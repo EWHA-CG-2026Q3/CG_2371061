@@ -60,6 +60,7 @@ Material:
     - _QueueControl: 0
     - _QueueOffset: 0
     - _Transparency: 0.965
+    - _WaveDuration: 1.5
     - _WaveSpeed: 5
     - _WaveWidth: 0.1
     m_Colors:
