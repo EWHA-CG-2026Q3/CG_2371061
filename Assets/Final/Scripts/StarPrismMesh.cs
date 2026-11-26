@@ -1,3 +1,4 @@
+
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -74,46 +75,63 @@ public class StarPrismMesh : MonoBehaviour
             0, 0, -halfDepth + depth * centerInset
         );
 
-        // Front star surface
+        // Front surface UV
         for (int i = 0; i < count; i++)
         {
             int next = (i + 1) % count;
 
             AddTriangle(
                 frontCenter, front[i], front[next],
+                GetFaceUV(frontCenter),
+                GetFaceUV(front[i]),
+                GetFaceUV(front[next]),
                 vertices, uvs, triangles
             );
         }
 
-        // Back star surface
+        // Back surface UV
         for (int i = 0; i < count; i++)
         {
             int next = (i + 1) % count;
 
             AddTriangle(
                 backCenter, back[next], back[i],
+                GetFaceUV(backCenter),
+                GetFaceUV(back[next]),
+                GetFaceUV(back[i]),
                 vertices, uvs, triangles
             );
         }
 
-        // Side surfaces
+        // Side surface UV
         for (int i = 0; i < count; i++)
         {
             int next = (i + 1) % count;
 
+            float u0 = (float)i / count;
+            float u1 = (float)(i + 1) / count;
+
+            Vector2 frontUV0 = new Vector2(u0, 1);
+            Vector2 backUV0 = new Vector2(u0, 0);
+            Vector2 backUV1 = new Vector2(u1, 0);
+            Vector2 frontUV1 = new Vector2(u1, 1);
+
             AddTriangle(
                 front[i], back[i], back[next],
+                frontUV0, backUV0, backUV1,
                 vertices, uvs, triangles
             );
 
             AddTriangle(
                 front[i], back[next], front[next],
+                frontUV0, backUV1, frontUV1,
                 vertices, uvs, triangles
             );
         }
 
         Mesh mesh = new Mesh();
         mesh.name = "Generated Star Mesh";
+
         mesh.SetVertices(vertices);
         mesh.SetUVs(0, uvs);
         mesh.SetTriangles(triangles, 0);
@@ -134,8 +152,17 @@ public class StarPrismMesh : MonoBehaviour
         filter.sharedMesh = generatedMesh;
     }
 
+    private Vector2 GetFaceUV(Vector3 vertex)
+    {
+        return new Vector2(
+            vertex.x / (outerRadius * 2f) + 0.5f,
+            vertex.y / (outerRadius * 2f) + 0.5f
+        );
+    }
+
     private void AddTriangle(
         Vector3 a, Vector3 b, Vector3 c,
+        Vector2 uvA, Vector2 uvB, Vector2 uvC,
         List<Vector3> vertices,
         List<Vector2> uvs,
         List<int> triangles)
@@ -146,9 +173,9 @@ public class StarPrismMesh : MonoBehaviour
         vertices.Add(b);
         vertices.Add(c);
 
-        uvs.Add(new Vector2(0.5f, 0.5f));
-        uvs.Add(new Vector2(1f, 0f));
-        uvs.Add(new Vector2(0f, 1f));
+        uvs.Add(uvA);
+        uvs.Add(uvB);
+        uvs.Add(uvC);
 
         triangles.Add(index);
         triangles.Add(index + 1);
