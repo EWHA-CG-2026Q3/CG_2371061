@@ -7,6 +7,9 @@ Shader "CG/Final_CymbalLighting"
         _SpecularColor ("Specular Color", Color) = (1, 0.9, 0.65, 1)
         _Shininess ("Shininess", Range(1, 128)) = 64
         _Ambient ("Ambient", Range(0, 1)) = 0.15
+
+        _ReflectionStrength ("Reflection Strength", Range(0, 1)) = 0.3
+        _ReflectionSmoothness ("Reflection Smoothness", Range(0, 1)) = 0.8
     }
 
     SubShader
@@ -26,14 +29,23 @@ Shader "CG/Final_CymbalLighting"
             #pragma vertex vert
             #pragma fragment frag
 
+            #pragma multi_compile _ _CLUSTER_LIGHT_LOOP
+            #pragma multi_compile_fragment _ _REFLECTION_PROBE_ATLAS
+            
+            #pragma multi_compile_fragment _ _REFLECTION_PROBE_BLENDING
+            #pragma multi_compile_fragment _ _REFLECTION_PROBE_BOX_PROJECTION
+
             #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
             #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Lighting.hlsl"
+            #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/GlobalIllumination.hlsl"
 
             CBUFFER_START(UnityPerMaterial)
                 float4 _BaseColor;
                 float4 _SpecularColor;
                 float _Shininess;
                 float _Ambient;
+                float _ReflectionStrength;
+                float _ReflectionSmoothness;
             CBUFFER_END
 
             struct Attributes
@@ -93,11 +105,28 @@ Shader "CG/Final_CymbalLighting"
                     specularPower *
                     NdotL;
 
+                // Ambient
                 float3 ambient =
                     _BaseColor.rgb * _Ambient;
 
+                // Reflection Probe
+                float3 reflectionVector =
+                    reflect(-V, N);
+
+                float3 reflection =
+                    GlossyEnvironmentReflection(
+                        reflectionVector,
+                        input.positionWS,
+                        1.0 - _ReflectionSmoothness,
+                        1.0,
+                        GetNormalizedScreenSpaceUV(input.positionCS)
+                    );
+
                 float3 finalColor =
-                    ambient + diffuse + specular;
+                    ambient +
+                    diffuse +
+                    specular +
+                    reflection * _ReflectionStrength;
 
                 return half4(finalColor, 1);
             }
